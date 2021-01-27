@@ -1,0 +1,68 @@
+{
+  "name": "@fenum/distributor",
+  "version": "1.0.0",
+  "description": "FENUM Distributor",
+  "keywords": [
+    "ethereum",
+    "fenum",
+    "erc20",
+    "distributor"
+  ],
+  "author": {
+    "name": "FENUM",
+    "email": "support@fenum.io",
+    "url": "https://fenum.io/"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fenum/fenum-distributor#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fenum/fenum-distributor"
+  },
+  "bugs": {
+    "url": "https://github.com/fenum/fenum-distributor/issues",
+    "email": "support@fenum.io"
+  },
+  "scripts": {
+    "clean": "rimraf ./build/",
+    "precompile": "yarn clean",
+    "compile": "truffle compile",
+    "postcompile": "yarn run zip-dir ./build compiled",
+    "pretest": "yarn compile",
+    "test": "mocha",
+    "predeploy": "yarn compile",
+    "deploy": "truffle migrations --network",
+    "postdeploy": "yarn run zip-dir . deployed",
+    "verify": "truffle run verify --network",
+    "prepublishOnly": "yarn test",
+    "postpublishOnly": "yarn run zip-dir . published",
+    "ganache-cli": "ganache-cli",
+    "mnemonic": "mnemonics",
+    "generate-merkle-root": "ts-node scripts/generate-merkle-root.ts",
+    "generate-merkle-root:example": "ts-node scripts/generate-merkle-root.ts --input scripts/example.json",
+    "zip-dir": "node ./scripts/zip-dir.js"
+  },
+  "files": [
+    "contracts",
+    "build"
+  ],
+  "devDependencies": {
+    "@openzeppelin/contracts": "^3.3.0",
+    "@truffle/hdwallet-provider": "^1.2.1",
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "chai": "^4.2.0",
+    "commander": "^7.0.0",
+    "ethereum-waffle": "^3.2.2",
+    "ethereumjs-util": "^7.0.7",
+    "ethers": "^5.0.26",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^8.2.1",
+    "rimraf": "^3.0.2",
+    "truffle": "^5.1.63",
+    "truffle-plugin-verify": "^0.5.4",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3",
+    "zip-dir": "^2.0.0"
+  }
+}
